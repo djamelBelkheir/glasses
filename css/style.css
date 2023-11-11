@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* starting variables  */
+:root {
+    --loadTranslate : translateX(0%);
+    --loadMainImg: translateX(-100%);
+    --loadZIndex : 99;
+    --loadTransition: 2s;
+    --loadTransitionDelay: 1s;
+}
+/* ending variables  */
+/* start global properties  */
+body {
+    font-family:sans-serif;
+}
+.container {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 1100px;
+}
+/* end global properties  */
+/* start header  */
+header {
+    padding: 25px 0;
+    opacity: 0;
+    transition: 2s;
+    transition-delay: 1s;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .container p{
+    font-size: 1.1rem;
+    font-weight: 600;
+    word-spacing: 3px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+header .container .menu{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+header .container .menu div{
+    width: 30px;
+    height: 2px;
+    background-color: black;
+}
+/* end header  */
+/* start landing page  */
+.landing-page {
+    position: relative;
+    min-height: 80vh;
+    width: 100%;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: 2s;
+    transition-delay: 1s;
+}
+.landing-page .container {
+    display: flex;
+    justify-content: space-between;
+    min-width: 813px;
+    position: relative;
+}
+.landing-page .container h1{
+    font-size: 5rem;
+    line-height: .8;
+    text-transform: uppercase;
+    writing-mode: vertical-lr;
+    letter-spacing: -6px;
+    font-weight: 900;
+    transform: translateX(-100%);
+    opacity: 0;
+    position: relative;
+    transition: 2s;
+    transition-delay: 1s;
+}
+.landing-page .container h1.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+.landing-page .container .glasses-name {
+    overflow: hidden;
+}
+.landing-page .container .glasses-name div {
+    position: relative;
+    padding: 2px 0;
+}
+.landing-page .container .glasses-name div::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    left: 0;
+    top: 0;
+    background-color: white;
+    transform: var(--loadTranslate);
+    z-index: 99;
+    transition: 4s;
+}
+
+.landing-page .container .col1,
+.landing-page .container .col3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.landing-page .container .col1 img{
+    max-width: 100px;
+    margin-top: 5px;
+}
+.landing-page .container .col1 .glasses-name div{
+    display: flex;
+}
+.landing-page .container .col1 .glasses-img p,
+.landing-page .container span {
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+.landing-page .container .col1 span {
+    position: relative;
+    bottom: 5px;
+    margin-left: 10px;
+}
+.landing-page .container .col2{
+    display: flex;
+}
+.landing-page .container .col2 div {
+    width: 430px;
+    overflow: hidden;
+    transform: translateX(0);
+    position: relative;
+    z-index: 1;
+}
+/* .landing-page .container .col2 div section {
+    display: flex;
+} */
+.landing-page .container .col2 div::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: aquamarine;
+    z-index: var(--loadZIndex);
+    transform: var(--loadMainImg);
+    transition: var(--loadTransition);
+    transition-delay: var(--loadTransitionDelay);
+}
+.landing-page .container .col2 div img{
+    width: 100%;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: var(--loadTransition);
+    transition-delay: var(--loadTransitionDelay);
+}
+.landing-page .container .col2 div img.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+.landing-page .container .col2 span{
+    position: relative;
+    bottom: 5px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+.landing-page .container .col3 p{
+    /* position: relative; */
+    bottom: 5px;
+}
+.landing-page .container .col3 p span {
+    cursor: pointer;
+}
+@media (min-width: 1007px) {
+    .landing-page .container {
+        justify-content: center;
+        gap: 100px;
+    }
+    header {
+        padding: 30px 0;
+    }
+}
+@media (min-width:792px) and (max-width: 950px) {
+    .landing-page .container {
+        align-items: center;
+    }
+    .landing-page .container .col1,
+    .landing-page .container .col3 {
+        gap: 100px;
+    }
+}
+@media (max-width: 950px) {
+    .landing-page .container {
+        flex-direction: column-reverse;
+        gap: 50px;
+        min-width: 0;
+    }
+    .landing-page .container h1 {
+        writing-mode: horizontal-tb;
+        position: relative;
+        left: 15px;
+    }
+    .landing-page .container .col1,
+    .landing-page .container .col3 {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+    }
+    .landing-page .container .col1 div {
+        flex-direction: column;
+    }
+    header p:not(:first-child) {
+        display: none;
+    }
+}
+@media (max-width: 633px) {
+    .landing-page .container {
+        align-items: center;
+        gap: 30px;
+    }
+    .landing-page .container h1 {
+        left: 0;
+        font-size: 3rem;
+        line-height: 1;
+    }
+    .landing-page .container span {
+        display: none;
+    }
+    .landing-page .container .col1 .glasses-img {
+        display: none;
+    }
+    .landing-page .container .slide-btn span {
+        display: block;
+        background-color:rgba(0, 0, 0, 0.545);
+        position: absolute;
+        left: 0;
+        width: 40px;
+        top: 40%;
+        height: 40px;
+        z-index: 99;
+        display: flex;
+        place-items: center;
+        padding: 4px;
+        color: white;
+    }
+    .landing-page .container .slide-btn span:first-child {
+        left: auto;
+        right: 0;
+        transform: translateX(50%);
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    .landing-page .container .slide-btn span:last-child {
+        transform: translateX(-50%);
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+    .landing-page .container .col2 div {
+        width: 100%;
+    }
+}
+/* end landing page  */
+/* starting loading page  */
+.loading-page {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220vw;
+    bottom: 0;
+    background-color: antiquewhite;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: 2s;
+}
+.loading-page.active {
+    transform: translateX(100%);
+}
+
+/* ending loading page  */
+
+
